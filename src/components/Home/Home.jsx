@@ -10,7 +10,7 @@ export default function Home() {
 
                 </div>
                 <div >
-                    <img src="https://static.vecteezy.com/system/resources/thumbnails/004/666/335/small/language-tutor-word-concepts-banner-video-tutorials-courses-speaking-club-presentation-foreign-language-learning-isolated-lettering-typography-idea-with-linear-icons-outline-illustration-vector.jpg"  />
+              
      
                 </div>
                 <div >
