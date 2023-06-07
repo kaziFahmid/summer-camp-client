@@ -1,9 +1,22 @@
 import React from 'react'
+import InstructorsBox from './InstructorsBox'
+import { useQuery } from '@tanstack/react-query'
 
 export default function Instructors() {
+
+const {data:instructors=[]}=useQuery({
+    queryKey: ['instructors'],
+    queryFn: async () => {
+      const res = await fetch('http://localhost:5000/instructors')
+      return res.json()
+    },
+  })
+ 
+  console.log( instructors)
   return (
-    <div>
-      
+    <div className='grid lg:grid-cols-3 grid-cols-1 mt-5 gap-4'>
+{instructors.map((instructor,index)=><InstructorsBox key={index}{...instructor}/>)}
+ 
     </div>
   )
 }
