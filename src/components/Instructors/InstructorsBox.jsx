@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function InstructorsBox({_id,instructorname,image,email}) {
+export default function InstructorsBox({instructorname,image,email}) {
   return (
     <div className="card w-96 mx-auto bg-base-100 shadow-xl">
     <figure><img src={image}alt="Shoes"  className='h-72'/></figure>

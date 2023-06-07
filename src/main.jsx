@@ -19,6 +19,13 @@ import {
 import Instructors from './components/Instructors/Instructors';
 import Classes from './components/Classes/Classes';
 import Dashboard from './components/Dashboard/Dashboard';
+import axios from 'axios';
+import ManageClass from './components/Dashboard/Admin/ManageClass';
+import ManageUsers from './components/Dashboard/Admin/ManageUsers';
+
+axios.defaults.baseURL=`http://localhost:5000/`
+axios.interceptors.request.use((req)=>{return req})
+axios.interceptors.response.use((res)=>{return res.data})
 
 const queryClient = new QueryClient()
 
@@ -54,8 +61,18 @@ const router = createBrowserRouter([
 
   {
     path:'/dashboard',
-    element:<Dashboard/>
-    
+    element:<Dashboard/>,
+    children:[
+      {
+        path:'/dashboard/admin/manageusers',
+        element:<ManageUsers/>,
+      },
+      {
+        path:'/dashboard/admin/manageclass',
+        element:<ManageClass/>,
+      }
+    ]
+
   },
 ]);
 

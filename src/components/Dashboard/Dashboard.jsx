@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import anime from 'animejs/lib/anime.es.js';
 import { Fade } from "react-awesome-reveal";
@@ -12,6 +12,10 @@ export default function Dashboard() {
     direction: 'alternate',
     loop: true
   });
+
+  const [isAdmin,setIsAdmin]=useState(true)
+  
+  const [isInstructor,setIsInstructor]=useState(false)
   return (
   <>
   
@@ -20,22 +24,41 @@ export default function Dashboard() {
     <div id='sidebar' className='w-full mt-2 bg-slate-300'>
 Welcome 
     </div>
+
+{/* Admin */}
+
+{isAdmin?<ul className="menu p-4 mt-14  " >
+
+<li>
+  <Link to='/dashboard/admin/manageclass' >   Manage Classes</Link>
+</li>
+  
+<li>
+  <Link  to='/dashboard/admin/manageusers' >  Manage Users</Link>
+</li>
+
+</ul>:<ul className="menu p-4 mt-14  " >
+
+<li>
+  <Link>My Selected Classes</Link>
+</li>
+<li>
+  <Link >My Enrolled Classes</Link>
+</li>
+
+</ul>}
+
+
+
+
+
 {/* student */}
 
-    <ul className="menu p-4 mt-14  " >
+    
 
-      <li>
-        <Link>My Selected Classes</Link>
-      </li>
-      <li>
-        <Link >My Enrolled Classes</Link>
-      </li>
 
-    </ul>
 
-{/* Instructor */}
-
-    <ul className="menu p-4 mt-14  " >
+    {isInstructor&&<ul className="menu p-4 mt-14  " >
 
 <li>
   <Link>    Add a Class</Link>
@@ -46,21 +69,9 @@ Welcome
 </li>
 
 </ul>
+}
 
 
-{/* Admin */}
-
-<ul className="menu p-4 mt-14  " >
-
-<li>
-  <Link>   Manage Classes</Link>
-</li>
-  
-<li>
-  <Link >  Manage Users</Link>
-</li>
-
-</ul>
 
 
 

@@ -1,7 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import useAuth from '../UseAuth/useAuth'
 
 export default function Header() {
+  const{user,logOut}=useAuth()
+let handleLogout=()=>{
+  console.log("asdfasdf")
+  logOut()
+}
   return (
 <>
 <div className='bg-pink-400'>
@@ -20,15 +26,16 @@ export default function Header() {
     </div>
     <a className="btn btn-ghost normal-case text-xl">SummerCamp</a>
   </div>
-  <div className="navbar-center hidden lg:flex">
-    <ul className="menu menu-horizontal flex gap-5 px-1 text-black font-bold ">
-   <li className='hover:text-pink-500'><Link to='/'>Home</Link></li><li className='hover:text-pink-500'><Link to='/instructors'>Instructors</Link></li><li className='hover:text-pink-500'><Link to='/classes'>Classes</Link></li><li className='hover:text-pink-500'><Link to='/dashboard'>Dashboard</Link></li>
-   <li > <Link>UserProfilePicture</Link></li>
+  <div className="navbar-center hidden lg:flex ">
+    <ul className=" justify-center items-center menu menu-horizontal flex gap-5 px-1 text-black font-bold ">
+   <li className='hover:text-pink-500'><Link to='/'>Home</Link></li><li className='hover:text-pink-500'><Link to='/instructors'>Instructors</Link></li><li className='hover:text-pink-500'><Link to='/classes'>Classes</Link></li>
+   {user?.email&&<li className='hover:text-pink-500'><Link to='/dashboard'>Dashboard</Link></li>}
+ {user?.email&&<li > <Link><img src={user?.photoURL} style={{ width: '30px', height: '30px', borderRadius: '50%', objectFit: 'cover' }}/></Link></li>}  
     </ul>
   </div>
   <div className="navbar-end">
-    <Link className="btn mr-5  hover:bg-pink-500 hover:text-white" to='/login'>Login</Link>
-    <Link className="btn mr-5 bg-pink-500 text-white" to='/signup'>Signup</Link>
+    {user?.email?<Link onClick={handleLogout} className="btn mr-5  hover:bg-pink-500 hover:text-white" >LogOut</Link>:<Link className="btn mr-5  hover:bg-pink-500 hover:text-white"  to='/login'>Login</Link>}
+   {user?'': <Link className="btn mr-5 bg-pink-500 text-white" to='/signup'>Signup</Link>}
   </div>
 </div>
 </>

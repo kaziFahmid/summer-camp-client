@@ -19,7 +19,7 @@ export default function AuthProvider({children}) {
         return signInWithEmailAndPassword(auth,email,password)
     }
     const logOut=()=>{
-        localStorage.removeItem('job-access-token')
+
         return signOut(auth)
     }
     const handleGoogleSignin=()=>{

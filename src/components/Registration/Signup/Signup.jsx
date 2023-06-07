@@ -1,19 +1,24 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link,useLocation, useNavigate } from 'react-router-dom';
 import SocialLogin from '../SocialLogin';
 import useAuth from '../../UseAuth/useAuth';
 import { useForm } from 'react-hook-form';
 import { updateProfile } from 'firebase/auth';
+import axios from 'axios';
 
 export default function Signup() {
   const { user, createUser } = useAuth();
   const passwordValidation = /^(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[!@#$%^&*(),.?":{}|<>]).{6,}$/;
+  let navigate = useNavigate()
+  let location = useLocation();
+  let from = location.state?.from?.pathname || "/";
 
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
+    reset
   } = useForm();
   const password = watch('password');
   const confirmPassword = watch('confirmPassword');
@@ -28,7 +33,18 @@ export default function Signup() {
       updateProfile(user, {
         displayName: data.username, photoURL: data.picture
       }).then(() => {
-        reset()
+        axios.post('/users', {
+          name:user.displayName,
+          email:user.email
+        })
+        .then( (response)=> {
+          if(response.insertedId){
+            reset()
+
+           
+          }
+        })
+        navigate(from, { replace: true });
       }).catch((error) => {
         // An error occurred
         // ...
