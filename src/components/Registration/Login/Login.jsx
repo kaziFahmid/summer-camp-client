@@ -1,8 +1,27 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import SocialLogin from '../SocialLogin'
-
+import { useForm } from "react-hook-form";
+import useAuth from '../../UseAuth/useAuth';
+import { Result } from 'postcss';
 export default function Login() {
+  const{ signInUser}=useAuth()
+  const { register, handleSubmit,  formState: { errors } ,reset} = useForm();
+const onSubmit = data => {
+  signInUser(data.email,data.password)
+  .then((result) => {
+    // Signed in 
+    const user = result.user;
+
+    reset()
+ 
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+  });Result
+
+};
   return (
 <div className="hero min-h-screen bg-base-200">
   <div className="hero-content flex-col lg:flex-column">
@@ -11,20 +30,29 @@ export default function Login() {
       <p className="py-6 mt-2">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
     </div>
     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-      <form className="card-body">
+      <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
 
         <div className="form-control">
           <label className="label">
             <span className="label-text">Email</span>
           </label>
-          <input type="email" name='email' placeholder="email" className="input input-bordered" />
+          <input type="email" name='email' placeholder="email" className="input input-bordered"  {...register("email", { required: "Email Address is required" })} 
+        aria-invalid={errors.email ? "true" : "false"}/>
+         {errors.email && <p role="alert" className='text-red-600'>{errors.email?.message}</p>}
         </div>
 
         <div className="form-control">
           <label className="label">
             <span className="label-text">Password</span>
           </label>
-          <input type="password" name='password'placeholder="password" className="input input-bordered" />
+          <input type="password" name='password'placeholder="password" className="input input-bordered" {...register("password", { required: "Password is required", minLength: 6 })} />
+          {errors.password && (
+                  <p role="alert" className='text-red-600'>
+                    {errors.password?.type === "required"
+                      ? "Password is required"
+                      : "Password must be at least 6 characters long"}
+                  </p>
+                )}
           <label className="label">
             <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
           </label>
