@@ -1,8 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import SocialLogin from '../SocialLogin'
+import useAuth from '../../UseAuth/useAuth'
+import { useForm } from "react-hook-form";
 
 export default function Signup() {
+const{user,createUser}=useAuth()
+
+
   return (
 <div className="hero min-h-screen bg-base-200">
   <div className="hero-content flex-col lg:flex-column">
