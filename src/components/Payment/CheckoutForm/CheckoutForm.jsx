@@ -77,7 +77,7 @@ const handleSubmit = async (event) => {
       if(paymentIntent.status==='succeeded'){
         setTransactionId(paymentIntent.id)
 
-        const payment={myemail:user?.email,instructorname,transactionId:paymentIntent.id,email,name,image,classId,price,class:_id,status:'paid'}
+        const payment={myemail:user?.email,instructorname,transactionId:paymentIntent.id,email,name,image,classId,price,class:_id,status:'paid',date:new Date()}
 
         axios.post(`/payments/${classId}`,payment)
         .then(res=>console.log(res))
