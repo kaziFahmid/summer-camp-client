@@ -6,14 +6,16 @@ export default function Slider() {
     <Carousel>
     <div >
         <img src="https://static.vecteezy.com/system/resources/previews/004/329/717/non_2x/language-learning-word-concept-banner-grammar-speaking-skills-foreign-language-online-school-self-education-isolated-lettering-typography-idea-with-linear-icons-presentation-illustration-vector.jpg" />
-
+<p className="legend">Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore voluptatum officiis quas sit. Quibusdam, debitis accusantium totam doloribus at praesentium? Nemo error vitae delectus similique provident culpa, labore ipsum beatae?</p>
     </div>
     <div >
         <img src="https://static.vecteezy.com/system/resources/thumbnails/004/666/335/small/language-tutor-word-concepts-banner-video-tutorials-courses-speaking-club-presentation-foreign-language-learning-isolated-lettering-typography-idea-with-linear-icons-outline-illustration-vector.jpg"  />
+        <p className="legend">Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore voluptatum officiis quas sit. Quibusdam, debitis accusantium totam doloribus at praesentium? Nemo error vitae delectus similique provident culpa, labore ipsum beatae?</p>
 
     </div>
     <div >
         <img src="https://static.vecteezy.com/system/resources/thumbnails/004/666/332/small/language-learning-word-concepts-banner-grammar-speaking-communication-skills-foreign-language-online-school-self-education-isolated-lettering-typography-outline-illustration-vector.jpg" />
+        <p className="legend">Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore voluptatum officiis quas sit. Quibusdam, debitis accusantium totam doloribus at praesentium? Nemo error vitae delectus similique provident culpa, labore ipsum beatae?</p>
        
     </div>
 </Carousel>

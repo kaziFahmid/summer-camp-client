@@ -1,13 +1,14 @@
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 export default function ManageClass() {
     const [open, setOpen] = useState(false);
 
-    let id;
- 
+    const [selectedClassId, setSelectedClassId] = useState('');
+    const [inputField,setInputField]=useState('')
+ console.log(inputField)
   const onCloseModal = () => setOpen(false);
 
     const { refetch, data: classes = [] } = useQuery({
@@ -33,14 +34,23 @@ export default function ManageClass() {
             console.log(response)
         })
       }
+      let handleInputChange = (e) => {
+        setInputField(e.target.value);
+      };
    
-      let handleSubmit=()=>{
-
-        console.log("aklsdjf")
-      }
-
+      let handleSubmit = () => {
+        axios
+          .patch(`/classes/feedback/${selectedClassId}`, {
+            feedback: inputField
+          })
+          .then((response) => {
+            refetch();
+            console.log(response);
+          })
+       
+      };
    let onOpenModal =(_id) => {
-
+    setSelectedClassId(_id)
     setOpen(true)
 };
 
@@ -55,7 +65,7 @@ export default function ManageClass() {
 
   <h2 className='text-2xl mb-5'>FeedBack</h2>
 
-<input type="text" placeholder="Type here" className="input input-bordered input-secondary w-full max-w-xs" />
+<input type="text"onChange={handleInputChange} placeholder="Type here" className="input input-bordered input-secondary w-full max-w-xs" />
 <button className='btn bg-pink-500 mt-6 text-white' onClick={handleSubmit}>Submit</button>
   </div>
     </Modal>

@@ -27,7 +27,8 @@ Welcome
 
 {/* Admin */}
 
-{isAdmin?<ul className="menu p-4 mt-14  " >
+
+<ul className="menu p-4 mt-14  " >
 
 <li>
   <Link to='/dashboard/admin/manageclass' >   Manage Classes</Link>
@@ -37,16 +38,23 @@ Welcome
   <Link  to='/dashboard/admin/manageusers' >  Manage Users</Link>
 </li>
 
-</ul>:<ul className="menu p-4 mt-14  " >
+</ul>
+
+
+
+<ul className="menu p-4 mt-14  " >
 
 <li>
-  <Link>My Selected Classes</Link>
+  <Link to='/dashboard/myselectedclass'>My Selected Classes</Link>
 </li>
 <li>
-  <Link >My Enrolled Classes</Link>
+  <Link  to='/dashboard/myenrolledclass'>My Enrolled Classes</Link>
+</li>
+<li>
+  <Link  to='/dashboard/paymenthistory'> Payment History</Link>
 </li>
 
-</ul>}
+</ul>
 
 
 
@@ -58,18 +66,18 @@ Welcome
 
 
 
-    {isInstructor&&<ul className="menu p-4 mt-14  " >
+<ul className="menu p-4 mt-14  " >
 
 <li>
-  <Link>    Add a Class</Link>
+  <Link to='/dashboard/addaclass'>    Add a Class</Link>
 </li>
   
 <li>
-  <Link >  My Classes</Link>
+  <Link to='/dashboard/myclasses'>  My Classes</Link>
 </li>
 
 </ul>
-}
+
 
 
 

@@ -15,7 +15,7 @@ export default function Classes() {
 <>
 <Heading title="Class"/>
 <div className='grid lg:grid-cols-3 grid-cols-1 mt-16 gap-4'>
-        {classes.map((cls,index)=><ClassBox key={index}  {...cls}/>)}
+        {classes.map((cls,index)=><ClassBox key={index} cls={cls} {...cls}/>)}
       
     </div>
 

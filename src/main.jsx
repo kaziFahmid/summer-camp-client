@@ -22,6 +22,13 @@ import Dashboard from './components/Dashboard/Dashboard';
 import axios from 'axios';
 import ManageClass from './components/Dashboard/Admin/ManageClass';
 import ManageUsers from './components/Dashboard/Admin/ManageUsers';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import MySelectedClass from './components/MySelectedClass/MySelectedClass';
+import MyEnrolledClass from './components/MyEnrolledClass/MyEnrolledClass';
+import AddaClass from './components/AddaClass/AddaClass';
+import MyClasses from './components/MyClasses/MyClasses';
+import Payment from './components/Payment/Payment';
+import PaymentHistory from './components/PaymentHistory/PaymentHistory';
 
 axios.defaults.baseURL=`http://localhost:5000/`
 axios.interceptors.request.use((req)=>{return req})
@@ -70,6 +77,32 @@ const router = createBrowserRouter([
       {
         path:'/dashboard/admin/manageclass',
         element:<ManageClass/>,
+      },
+      {
+        path:'/dashboard/myselectedclass',
+        element:<MySelectedClass/>,
+      },
+      {
+        path:'/dashboard/myenrolledclass',
+        element:<MyEnrolledClass/>,
+      },
+
+      {
+        path:'/dashboard/addaclass',
+        element:<AddaClass/>,
+      },
+      {
+        path:'/dashboard/myclasses',
+        element:<MyClasses/>,
+      },
+      {
+        path:'/dashboard/paymenthistory',
+        element:<PaymentHistory/>
+      },
+      {
+        path:'/dashboard/payment/:id',
+        element:<Payment/>,
+        loader: ({params})=>fetch(`http://localhost:5000/myselectedclass/${params.id}`)
       }
     ]
 
