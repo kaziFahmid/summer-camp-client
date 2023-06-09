@@ -4,10 +4,11 @@ import { useQuery } from '@tanstack/react-query'
 import Heading from '../Heading/Heading'
 
 export default function Classes() {
+
     const {data:classes=[]}=useQuery({
         queryKey: ['classes'],
         queryFn: async () => {
-          const res = await fetch('http://localhost:5000/classes')
+          const res = await fetch('http://localhost:5000/classes',)
           return res.json()
         },
       })

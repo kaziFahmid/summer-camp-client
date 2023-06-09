@@ -29,6 +29,10 @@ import AddaClass from './components/AddaClass/AddaClass';
 import MyClasses from './components/MyClasses/MyClasses';
 import Payment from './components/Payment/Payment';
 import PaymentHistory from './components/PaymentHistory/PaymentHistory';
+import ErrorPage from './components/ErrorPage/ErrorPage';
+import AdminRoute from './components/AdminRoute/AdminRoute';
+import InstructorRoute from './components/InstructorRoute/InstructorRoute';
+import StudentRoute from './components/StudentRoute/StudentRoute';
 
 axios.defaults.baseURL=`http://localhost:5000/`
 axios.interceptors.request.use((req)=>{return req})
@@ -41,6 +45,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Main/>,
+    errorElement: <ErrorPage />,
     children:[
       {
         path:'/',
@@ -68,37 +73,39 @@ const router = createBrowserRouter([
 
   {
     path:'/dashboard',
-    element:<Dashboard/>,
+    element:<PrivateRoute><Dashboard/></PrivateRoute>,
     children:[
       {
         path:'/dashboard/admin/manageusers',
-        element:<ManageUsers/>,
+        element:<AdminRoute><ManageUsers/></AdminRoute>
+        
       },
       {
         path:'/dashboard/admin/manageclass',
-        element:<ManageClass/>,
+        element:<AdminRoute><ManageClass/></AdminRoute>
       },
       {
-        path:'/dashboard/myselectedclass',
-        element:<MySelectedClass/>,
+        path:'/dashboard/student/myselectedclass',
+        element:<StudentRoute><MySelectedClass/></StudentRoute>
       },
       {
-        path:'/dashboard/myenrolledclass',
-        element:<MyEnrolledClass/>,
-      },
-
-      {
-        path:'/dashboard/addaclass',
-        element:<AddaClass/>,
+        path:'/dashboard/student/myenrolledclass',
+        element:<StudentRoute><MyEnrolledClass/></StudentRoute>
       },
       {
-        path:'/dashboard/myclasses',
-        element:<MyClasses/>,
+        path:'/dashboard/student/paymenthistory',
+        element:<StudentRoute><PaymentHistory/></StudentRoute>
       },
       {
-        path:'/dashboard/paymenthistory',
-        element:<PaymentHistory/>
+        path:'/dashboard/instructor/addaclass',
+        element:<InstructorRoute><AddaClass/></InstructorRoute>
       },
+      {
+        path:'/dashboard/instructor/myclasses',
+        element:<InstructorRoute><MyClasses/></InstructorRoute>
+        
+      },
+    
       {
         path:'/dashboard/payment/:id',
         element:<Payment/>,

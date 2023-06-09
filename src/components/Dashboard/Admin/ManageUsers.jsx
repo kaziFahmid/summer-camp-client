@@ -3,10 +3,15 @@ import axios from 'axios'
 import React from 'react'
 
 export default function ManageUsers() {
+  const token=localStorage.getItem('access-token')
     const { refetch, data: users = [] } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-          const res = await fetch('http://localhost:5000/users')
+          const res = await fetch('http://localhost:5000/users',{
+            headers:{
+              authorization:`bearer ${token}`
+            }
+          })
           return res.json()
         },
       })

@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import anime from 'animejs/lib/anime.es.js';
 import { Fade } from "react-awesome-reveal";
+import useAdmin from '../useAdmin/useAdmin';
+import useInstructor from '../useInstructor/useInstructor';
+import useStudent from '../useStudent/useStudent';
 
 export default function Dashboard() {
 
@@ -13,9 +16,12 @@ export default function Dashboard() {
     loop: true
   });
 
-  const [isAdmin,setIsAdmin]=useState(true)
-  
-  const [isInstructor,setIsInstructor]=useState(false)
+  const [isAdmin]=useAdmin()
+
+  const[isInstructor]=useInstructor()
+  const[student]=useStudent()
+  console.log(student.student)
+
   return (
   <>
   
@@ -28,7 +34,7 @@ Welcome
 {/* Admin */}
 
 
-<ul className="menu p-4 mt-14  " >
+{isAdmin.admin&&<ul className="menu p-4 mt-14  " >
 
 <li>
   <Link to='/dashboard/admin/manageclass' >   Manage Classes</Link>
@@ -38,45 +44,40 @@ Welcome
   <Link  to='/dashboard/admin/manageusers' >  Manage Users</Link>
 </li>
 
-</ul>
+</ul>}
 
 
 
-<ul className="menu p-4 mt-14  " >
+
+
+
+{student.student&&<ul className="menu p-4 mt-14  " >
 
 <li>
-  <Link to='/dashboard/myselectedclass'>My Selected Classes</Link>
+  <Link to='/dashboard/student/myselectedclass'>My Selected Classes</Link>
 </li>
 <li>
-  <Link  to='/dashboard/myenrolledclass'>My Enrolled Classes</Link>
+  <Link  to='/dashboard/student/myenrolledclass'>My Enrolled Classes</Link>
 </li>
 <li>
-  <Link  to='/dashboard/paymenthistory'> Payment History</Link>
+  <Link  to='/dashboard/student/paymenthistory'> Payment History</Link>
 </li>
 
-</ul>
+</ul>}
 
 
-
-
-
-{/* student */}
-
-    
-
-
-
-<ul className="menu p-4 mt-14  " >
+{isInstructor.instructor&&<ul className="menu p-4 mt-14  " >
 
 <li>
-  <Link to='/dashboard/addaclass'>    Add a Class</Link>
+  <Link to='/dashboard/instructor/addaclass'>    Add a Class</Link>
 </li>
   
 <li>
-  <Link to='/dashboard/myclasses'>  My Classes</Link>
+  <Link to='/dashboard/instructor/myclasses'>  My Classes</Link>
 </li>
 
-</ul>
+</ul> 
+}
 
 
 

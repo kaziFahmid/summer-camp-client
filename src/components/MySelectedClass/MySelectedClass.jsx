@@ -6,10 +6,15 @@ import { Link } from 'react-router-dom'
 
 export default function MySelectedClass() {
   const{user}=useAuth()
+  const token=localStorage.getItem('access-token')
   const {refetch,data:myselectedclass=[]}=useQuery({
     queryKey: ['myselectedclass'],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/myselectedclass?email=${user?.email}`)
+      const res = await fetch(`http://localhost:5000/myselectedclass?email=${user?.email}`,{
+        headers:{
+          authorization:`bearer ${token}`
+        }
+      })
       return res.json()
     },
   })

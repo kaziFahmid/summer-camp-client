@@ -4,10 +4,15 @@ import { useQuery } from '@tanstack/react-query';
 
 export default function PaymentHistory() {
   const { user } = useAuth();
+  const token=localStorage.getItem('access-token')
   const { refetch, data: paymenthistory = [] } = useQuery({
     queryKey: ['myEnrolledClass'],
     queryFn: async () => {
-      const res = await fetch('http://localhost:5000/payments');
+      const res = await fetch(`http://localhost:5000/payments?email=${user?.email}`,{
+        headers:{
+          authorization:`bearer ${token}`
+        }
+      });
       return res.json();
     },
   });

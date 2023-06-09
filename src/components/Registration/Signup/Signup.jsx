@@ -35,7 +35,8 @@ export default function Signup() {
       }).then(() => {
         axios.post('/users', {
           name:user.displayName,
-          email:user.email
+          email:user.email,
+          role:"student"
         })
         .then( (response)=> {
           if(response.insertedId){

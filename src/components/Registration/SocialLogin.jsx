@@ -22,7 +22,8 @@ const handleGoogle = (e) => {
 
       axios.post('/users', {
         email:user.email,
-        username:user.displayName
+        username:user.displayName,
+        role:"student"
           })
           .then( (response)=> {
            console.log(response)
