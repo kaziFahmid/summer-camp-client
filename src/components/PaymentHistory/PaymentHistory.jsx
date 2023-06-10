@@ -8,7 +8,7 @@ export default function PaymentHistory() {
   const { refetch, data: paymenthistory = [] } = useQuery({
     queryKey: ['myEnrolledClass'],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/payments?email=${user?.email}`,{
+      const res = await fetch(`https://summer-camp-server-xi.vercel.app/payments?email=${user?.email}`,{
         headers:{
           authorization:`bearer ${token}`
         }

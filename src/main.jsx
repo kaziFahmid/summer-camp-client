@@ -34,7 +34,7 @@ import AdminRoute from './components/AdminRoute/AdminRoute';
 import InstructorRoute from './components/InstructorRoute/InstructorRoute';
 import StudentRoute from './components/StudentRoute/StudentRoute';
 
-axios.defaults.baseURL=`http://localhost:5000/`
+axios.defaults.baseURL=`https://summer-camp-server-xi.vercel.app/`
 axios.interceptors.request.use((req)=>{return req})
 axios.interceptors.response.use((res)=>{return res.data})
 
@@ -109,7 +109,7 @@ const router = createBrowserRouter([
       {
         path:'/dashboard/payment/:id',
         element:<Payment/>,
-        loader: ({params})=>fetch(`http://localhost:5000/myselectedclass/${params.id}`)
+        loader: ({params})=>fetch(`https://summer-camp-server-xi.vercel.app/myselectedclass/${params.id}`)
       }
     ]
 

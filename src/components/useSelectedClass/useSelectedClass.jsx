@@ -9,7 +9,7 @@ export default function useSelectedClass() {
     const {refetch,data:myselectedclass=[]}=useQuery({
       queryKey: ['myselectedclass'],
       queryFn: async () => {
-        const res = await fetch(`http://localhost:5000/myselectedclass?email=${user?.email}`,{
+        const res = await fetch(`https://summer-camp-server-xi.vercel.app/myselectedclass?email=${user?.email}`,{
           headers:{
             authorization:`bearer ${token}`
           }

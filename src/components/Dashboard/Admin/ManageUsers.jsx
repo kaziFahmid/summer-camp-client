@@ -9,7 +9,7 @@ export default function ManageUsers() {
     const { refetch, data: users = [] } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-          const res = await fetch('http://localhost:5000/users',{
+          const res = await fetch('https://summer-camp-server-xi.vercel.app/users',{
             headers:{
               authorization:`bearer ${token}`
             }

@@ -8,7 +8,7 @@ export default function MyClasses() {
   const { data: classes = [] } = useQuery({
     queryKey: ['classes'],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/classes/instructor?email=${user?.email}`,{
+      const res = await fetch(`https://summer-camp-server-xi.vercel.app/classes/instructor?email=${user?.email}`,{
         headers:{
           authorization:`bearer ${token}`
         }
@@ -35,6 +35,7 @@ export default function MyClasses() {
               <th>Total Student Enrolment</th>
               <th>Status</th>
               <th>Feedback</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -54,6 +55,7 @@ export default function MyClasses() {
                 <td>{cls?.studentsEnrolment||0}</td>
                 <td>{cls?.status}</td>
                 <td>{cls?.status === 'pending' || cls?.status === 'approved' ? '' : cls?.feedback}</td>
+                <td><button className='btn bg-pink-500 text-white'>Update</button></td>
               </tr>
             ))}
           </tbody>
