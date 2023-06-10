@@ -1,24 +1,12 @@
-import { useQuery } from '@tanstack/react-query'
+
 import React from 'react'
-import useAuth from '../UseAuth/useAuth'
+
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import useSelectedClass from '../useSelectedClass/useSelectedClass'
 
 export default function MySelectedClass() {
-  const{user}=useAuth()
-  const token=localStorage.getItem('access-token')
-  const {refetch,data:myselectedclass=[]}=useQuery({
-    queryKey: ['myselectedclass'],
-    queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/myselectedclass?email=${user?.email}`,{
-        headers:{
-          authorization:`bearer ${token}`
-        }
-      })
-      return res.json()
-    },
-  })
-
+  const[refetch,myselectedclass]=useSelectedClass()
   let handleDelete=(_id)=>{
 
     axios.delete(`/myselectedclass/${_id}`)

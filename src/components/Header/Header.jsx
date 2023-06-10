@@ -31,7 +31,7 @@ let handleMode=()=>{
 
 </div>
 <div className="navbar bg-base-100">
-  <button className='btn ' onClick={handleMode}>{theme === 'dark' ? 'Light' : 'Dark'}</button>
+  <button className='btn hidden md:block' onClick={handleMode}>{theme === 'dark' ? 'Light' : 'Dark'}</button>
   <div className="navbar-start">
     <div className="dropdown z-50">
       <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -39,6 +39,7 @@ let handleMode=()=>{
       </label>
       <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
       <li className='mt-3  hover:text-pink-500'><Link to='/'>Home</Link></li><li className='mt-3 hover:text-pink-500'><Link to='/instructors'>Instructors</Link></li><li className='mt-3 hover:text-pink-500 '><Link to='/classes'>Classes</Link></li><li className='mt-3 hover:text-pink-500' ><Link to='/dashboard'>Dashboard</Link></li>
+      <button className='btn  md:hidden' onClick={handleMode}>{theme === 'dark' ? 'Light' : 'Dark'}</button>
       </ul>
     </div>
     <a className="btn btn-ghost normal-case text-xl">SummerCamp</a>

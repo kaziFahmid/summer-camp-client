@@ -30,13 +30,13 @@ export default function AddaClass() {
 
   return (
     <div className="w-full max-w-md mx-auto">
-      <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleClassSubmit}>
+      <form className=" shadow-xl rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleClassSubmit}>
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="className">
+          <label className="block  text-sm font-bold mb-2" htmlFor="className">
             Class Name
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3  leading-tight focus:outline-none focus:shadow-outline"
             id="className"
             name="className"
             type="text"
@@ -45,11 +45,11 @@ export default function AddaClass() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="classImage">
+          <label className="block  text-sm font-bold mb-2" htmlFor="classImage">
             Class Image
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3  leading-tight focus:outline-none focus:shadow-outline"
             id="classImage"
             name="classImage"
             type="text"
@@ -58,11 +58,11 @@ export default function AddaClass() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="instructorName">
+          <label className="block text-sm font-bold mb-2" htmlFor="instructorName">
             Instructor Name
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
             id="instructorName"
             name="instructorName"
             defaultValue={user?.displayName}
@@ -72,11 +72,11 @@ export default function AddaClass() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="instructorEmail">
+          <label className="block  text-sm font-bold mb-2" htmlFor="instructorEmail">
             Instructor Email
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3  leading-tight focus:outline-none focus:shadow-outline"
             id="instructorEmail"
             name="instructorEmail"
             type="email"
@@ -86,11 +86,11 @@ export default function AddaClass() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="availableSeats">
+          <label className="block  text-sm font-bold mb-2" htmlFor="availableSeats">
             Available Seats
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3  leading-tight focus:outline-none focus:shadow-outline"
             id="availableSeats"
             type="number"
             name="availableSeats"
@@ -99,11 +99,11 @@ export default function AddaClass() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="price">
+          <label className="block  text-sm font-bold mb-2" htmlFor="price">
             Price
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3  leading-tight focus:outline-none focus:shadow-outline"
             id="price"
             name="price"
             type="number"

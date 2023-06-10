@@ -2,7 +2,8 @@ import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import useAuth from '../../UseAuth/useAuth';
-
+import useSelectedClass from '../../useSelectedClass/useSelectedClass';
+import './common.css'
 export default function CheckoutForm ({_id,seat,classId,image,price,instructorname,name,email}) {
 console.log(price)
 
@@ -12,7 +13,7 @@ console.log(price)
   const[cardError,setCardError]=useState('')
 const[clientSecret,setClientSecret]=useState('')
 const[processing,setProcessing]=useState(false)
-
+const[refetch,myselectedclass]=useSelectedClass()
 const[transactionId,setTransactionId]=useState('')
 useEffect(()=>{
     axios.post('/create-payment-intent',{price})
@@ -80,7 +81,7 @@ const handleSubmit = async (event) => {
         const payment={myemail:user?.email,instructorname,transactionId:paymentIntent.id,email,name,image,classId,price,class:_id,status:'paid',date:new Date()}
 
         axios.post(`/payments/${classId}`,payment)
-        .then(res=>console.log(res))
+        .then(res=>refetch(),console.log(res))
   
       }
     } catch (error) {
@@ -91,7 +92,7 @@ const handleSubmit = async (event) => {
 
   return (
   <>
-    <div>
+    <div className='mt-36 '>
         <form onSubmit={handleSubmit}>
       <CardElement
         options={{
@@ -109,7 +110,7 @@ const handleSubmit = async (event) => {
           },
         }}
       />
-      <button type="submit" className='btn bg-pink-500
+      <button type="submit" className='btn bg-pink-500 text-white mt-4
       ' disabled={!stripe||!clientSecret ||processing}>
         Pay
       </button>

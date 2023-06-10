@@ -1,8 +1,10 @@
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export default function ManageUsers() {
+  const navigate=useNavigate()
   const token=localStorage.getItem('access-token')
     const { refetch, data: users = [] } = useQuery({
         queryKey: ['users'],
@@ -15,6 +17,12 @@ export default function ManageUsers() {
           return res.json()
         },
       })
+
+      useEffect(() => {
+        if (!token) {
+          navigate('/'); 
+        }
+      }, [token, navigate]);
 
       let handleAdmin=(_id)=>{
         axios.patch(`/users/admin/${_id}`)
@@ -56,8 +64,8 @@ export default function ManageUsers() {
       <td>{user.name}</td>
       <td>{user.email}</td>
       <td>
-        <button className='btn bg-pink-500'onClick={()=>handleAdmin(user._id)}disabled={user.role=="admin"&&true}>Admin</button>
-        <button className='btn bg-pink-500' onClick={()=>handleInstructor(user._id)}disabled={user.role=="instructor"&&true}>Instructor</button>
+        <button className='btn bg-pink-500 text-white'onClick={()=>handleAdmin(user._id)}disabled={user.role=="admin"&&true}>Admin</button>
+        <button className='btn bg-pink-500 text-white' onClick={()=>handleInstructor(user._id)}disabled={user.role=="instructor"&&true}>Instructor</button>
       </td>
     </tr>
   );

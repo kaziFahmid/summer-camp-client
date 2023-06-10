@@ -2,6 +2,8 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import useAuth from '../UseAuth/useAuth';
 import axios from 'axios';
+import useAdmin from '../useAdmin/useAdmin';
+import useInstructor from '../useInstructor/useInstructor';
 
 
 export default function ClassBox({
@@ -17,7 +19,9 @@ export default function ClassBox({
 
   const navigate = useNavigate();
   const { user } = useAuth();
-
+  const[isAdmin]=useAdmin()
+  const[isInstructor]=useInstructor()
+console.log(user)
   const handleSelect = (cls) => {
     const{_id,
       image,
@@ -47,7 +51,7 @@ export default function ClassBox({
       navigate('/login'); 
     }
   };
-
+ 
   return (
     <div className={`card w-96 mx-auto bg-base-100 shadow-xl ${seat==0&& "bg-red-500"}`}>
       <figure>
@@ -63,7 +67,7 @@ export default function ClassBox({
         <button
           className="btn bg-pink-500 text-white"
           onClick={()=>handleSelect(cls)} 
-        disabled={seat==0&&true}>
+        disabled={ seat==0||isAdmin.admin||isInstructor.instructor }>
           Select
         </button>
       </div>

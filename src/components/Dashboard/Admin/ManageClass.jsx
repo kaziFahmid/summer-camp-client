@@ -131,7 +131,7 @@ export default function ManageClass() {
         <td>
        <button className='btn bg-pink-500 text-white
        ' onClick={()=>handleApprove(cls._id)} disabled={cls.status=='approved'?true:cls.status=="denied"?true:false}> Approve</button> <button className='btn bg-red-500 text-white
-       '  onClick={()=>handleDeny(cls._id)} disabled={cls.status=='approved'?true:cls.status=="denied"?true:false}>Deny</button>  <button className='btn bg-yellow-400-500 text-black
+       '  onClick={()=>handleDeny(cls._id)} disabled={cls.status=='approved'?true:cls.status=="denied"?true:false}>Deny</button>  <button className='btn bg-yellow-400 text-white
        ' onClick={()=> onOpenModal(cls._id)} >Feedback</button>
         </td>
       </tr>

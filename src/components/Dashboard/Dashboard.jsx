@@ -5,7 +5,9 @@ import { Fade } from "react-awesome-reveal";
 import useAdmin from '../useAdmin/useAdmin';
 import useInstructor from '../useInstructor/useInstructor';
 import useStudent from '../useStudent/useStudent';
-
+import { MdClass, MdPayments } from 'react-icons/Md';
+import { AiOutlinePlus } from 'react-icons/Ai';
+import { FaUserAlt } from 'react-icons/Fa';
 export default function Dashboard() {
 
   anime({
@@ -35,13 +37,16 @@ Welcome
 
 
 {isAdmin.admin&&<ul className="menu p-4 mt-14  " >
-
-<li>
-  <Link to='/dashboard/admin/manageclass' >   Manage Classes</Link>
+<li className='text-center text-3xl'>
+ Admin
+</li>
+  
+<li className='mt-8'>
+  <Link to='/dashboard/admin/manageclass' > <MdClass/>  Manage Classes</Link>
 </li>
   
 <li>
-  <Link  to='/dashboard/admin/manageusers' >  Manage Users</Link>
+  <Link  to='/dashboard/admin/manageusers' > <FaUserAlt/> Manage Users</Link>
 </li>
 
 </ul>}
@@ -52,28 +57,32 @@ Welcome
 
 
 {student.student&&<ul className="menu p-4 mt-14  " >
-
-<li>
-  <Link to='/dashboard/student/myselectedclass'>My Selected Classes</Link>
+<li className='text-center text-3xl'>
+ Student
+</li>
+<li className='mt-8'>
+  <Link to='/dashboard/student/myselectedclass'>  <MdClass/>My Selected Classes</Link>
 </li>
 <li>
-  <Link  to='/dashboard/student/myenrolledclass'>My Enrolled Classes</Link>
+  <Link  to='/dashboard/student/myenrolledclass' >   <MdClass/>My Enrolled Classes</Link>
 </li>
 <li>
-  <Link  to='/dashboard/student/paymenthistory'> Payment History</Link>
+  <Link  to='/dashboard/student/paymenthistory'><MdPayments/> Payment History</Link>
 </li>
 
 </ul>}
 
 
 {isInstructor.instructor&&<ul className="menu p-4 mt-14  " >
-
-<li>
-  <Link to='/dashboard/instructor/addaclass'>    Add a Class</Link>
+<li className='text-center text-3xl'>
+Instructor
+</li>
+<li className='mt-8'>
+  <Link to='/dashboard/instructor/addaclass'> <AiOutlinePlus/>   Add a Class</Link>
 </li>
   
 <li>
-  <Link to='/dashboard/instructor/myclasses'>  My Classes</Link>
+  <Link to='/dashboard/instructor/myclasses'> <MdClass/> My Classes</Link>
 </li>
 
 </ul> 
