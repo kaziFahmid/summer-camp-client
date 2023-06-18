@@ -4,6 +4,7 @@ import useAuth from '../UseAuth/useAuth';
 import axios from 'axios';
 import useAdmin from '../useAdmin/useAdmin';
 import useInstructor from '../useInstructor/useInstructor';
+import Swal from 'sweetalert2';
 
 
 export default function ClassBox({
@@ -21,8 +22,15 @@ export default function ClassBox({
   const { user } = useAuth();
   const[isAdmin]=useAdmin()
   const[isInstructor]=useInstructor()
-console.log(user)
+
   const handleSelect = (cls) => {
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Your work has been saved',
+      showConfirmButton: false,
+      timer: 1500
+    })
     const{_id,
       image,
       instructorname,

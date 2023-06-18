@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query'
 
 export default function MyEnrolledClass() {
   const{user}=useAuth()
+
   const token=localStorage.getItem('access-token')
   const {refetch,data:myEnrolledClass=[]}=useQuery({
     queryKey: ['myEnrolledClass'],

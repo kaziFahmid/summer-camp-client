@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import useAuth from '../../UseAuth/useAuth';
 import useSelectedClass from '../../useSelectedClass/useSelectedClass';
 import './common.css'
+import Swal from 'sweetalert2';
 export default function CheckoutForm ({_id,seat,classId,image,price,instructorname,name,email}) {
 console.log(price)
 
@@ -76,12 +77,19 @@ const handleSubmit = async (event) => {
       console.log(paymentIntent);
       setProcessing(false)
       if(paymentIntent.status==='succeeded'){
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Payment Successful',
+          showConfirmButton: false,
+          timer: 1500
+        })
         setTransactionId(paymentIntent.id)
 
         const payment={myemail:user?.email,instructorname,transactionId:paymentIntent.id,email,name,image,classId,price,class:_id,status:'paid',date:new Date()}
 
         axios.post(`/payments/${classId}`,payment)
-        .then(res=>refetch(),console.log(res))
+        .then(res=>refetch())
   
       }
     } catch (error) {

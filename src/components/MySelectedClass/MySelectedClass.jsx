@@ -4,16 +4,39 @@ import React from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import useSelectedClass from '../useSelectedClass/useSelectedClass'
+import Swal from 'sweetalert2'
 
 export default function MySelectedClass() {
   const[refetch,myselectedclass]=useSelectedClass()
   let handleDelete=(_id)=>{
-
-    axios.delete(`/myselectedclass/${_id}`)
-    .then(function (response) {
-      refetch()
-      console.log(response);
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios.delete(`/myselectedclass/${_id}`)
+        .then(function (response) {
+          if(response.deletedCount>0){
+            Swal.fire(
+              'Deleted!',
+              'Your file has been deleted.',
+              'success'
+            )
+          }
+          refetch()
+          
+         
+          
+        })
+      
+      }
     })
+
   }
 
 
