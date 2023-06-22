@@ -1,7 +1,14 @@
 import { useQuery } from '@tanstack/react-query'
 import React from 'react'
-
+import AOS from 'aos';
+import 'aos/dist/aos.css'
 export default function PopularClass() {
+  AOS.init({
+    offset: 200,
+    duration: 600,
+    easing: 'ease-in-sine',
+    delay: 100,
+  });
     const {data:classes=[]}=useQuery({
         queryKey: ['classes'],
         queryFn: async () => {
@@ -15,7 +22,7 @@ export default function PopularClass() {
       studentsEnrolment);
   return (
     <div className='grid grid-cols-1 md:grid-cols-3 mt-14 gap-4 container mx-auto'>
-        {classes.slice(0,6).map((cls,index)=>  <div key={index}className={`card md:w-96 mx-auto bg-base-100 shadow-xl `}>
+        {classes.slice(0,6).map((cls,index)=>  <div data-aos="flip-down" key={index}className={`card md:w-96 mx-auto  bg-base-100 shadow-xl `}>
       <figure>
         <img src={cls.image} alt="Shoes" className="h-72" />
       </figure>
