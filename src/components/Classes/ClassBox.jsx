@@ -24,13 +24,7 @@ export default function ClassBox({
   const[isInstructor]=useInstructor()
 
   const handleSelect = (cls) => {
-    Swal.fire({
-      position: 'top-end',
-      icon: 'success',
-      title: 'Your work has been saved',
-      showConfirmButton: false,
-      timer: 1500
-    })
+   
     const{_id,
       image,
       instructorname,
@@ -51,7 +45,15 @@ export default function ClassBox({
 
       })
       .then(function (response) {
-        console.log(response);
+        if(response.insertedId){
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Your Class has been saved',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }
       })
 
     } else {
