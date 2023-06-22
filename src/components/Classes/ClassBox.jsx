@@ -63,7 +63,7 @@ export default function ClassBox({
   };
  
   return (
-    <div className={`card w-96 mx-auto bg-base-100 shadow-xl ${seat==0&& "bg-red-500"}`}>
+    <div className={`card md:w-96 mx-auto bg-base-100 shadow-xl ${seat==0&& "bg-red-500"}`}>
       <figure>
         <img src={image} alt="Shoes" className="h-72" />
       </figure>

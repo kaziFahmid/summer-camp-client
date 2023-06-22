@@ -15,7 +15,7 @@ export default function PopularClass() {
       studentsEnrolment);
   return (
     <div className='grid grid-cols-1 md:grid-cols-3 mt-14 gap-4 container mx-auto'>
-        {classes.slice(0,6).map((cls,index)=>  <div key={index}className={`card w-96 mx-auto bg-base-100 shadow-xl `}>
+        {classes.slice(0,6).map((cls,index)=>  <div key={index}className={`card md:w-96 mx-auto bg-base-100 shadow-xl `}>
       <figure>
         <img src={cls.image} alt="Shoes" className="h-72" />
       </figure>

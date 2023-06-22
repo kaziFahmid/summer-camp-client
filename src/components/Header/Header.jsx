@@ -39,7 +39,9 @@ let handleMode=()=>{
       </label>
       <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
       <li className='mt-3  hover:text-pink-500'><Link to='/'>Home</Link></li><li className='mt-3 hover:text-pink-500'><Link to='/instructors'>Instructors</Link></li><li className='mt-3 hover:text-pink-500 '><Link to='/classes'>Classes</Link></li><li className='mt-3 hover:text-pink-500' ><Link to='/dashboard'>Dashboard</Link></li>
-      <button className='btn  md:hidden' onClick={handleMode}>{theme === 'dark' ? 'Light' : 'Dark'}</button>
+    {user?.email?<Link onClick={handleLogout} className="btn mr-5  hover:bg-pink-500 hover:text-white w-full" >LogOut</Link>:  <Link className="btn mr-5 w-full  hover:bg-pink-500 hover:text-white  "  to='/login'>Login</Link>}
+     {user?.email?"": <Link className="btn mt-3 mr-5 bg-pink-500 text-white w-full " to='/signup'>Signup</Link>}
+      <button className='btn mt-3  w-full md:hidden' onClick={handleMode}>{theme === 'dark' ? 'Light' : 'Dark'}</button>
       </ul>
     </div>
     <a className="btn btn-ghost normal-case text-xl">SummerCamp</a>
@@ -52,8 +54,8 @@ let handleMode=()=>{
     </ul>
   </div>
   <div className="navbar-end">
-    {user?.email?<Link onClick={handleLogout} className="btn mr-5  hover:bg-pink-500 hover:text-white" >LogOut</Link>:<Link className="btn mr-5  hover:bg-pink-500 hover:text-white"  to='/login'>Login</Link>}
-   {user?'': <Link className="btn mr-5 bg-pink-500 text-white" to='/signup'>Signup</Link>}
+    {user?.email?<Link onClick={handleLogout} className="btn mr-5  hover:bg-pink-500 hover:text-white md:flex hidden" >LogOut</Link>:<Link className="btn mr-5  hover:bg-pink-500 hover:text-white hidden md:flex "  to='/login'>Login</Link>}
+   {user?'': <Link className="btn mr-5 bg-pink-500 text-white  hidden md:flex" to='/signup'>Signup</Link>}
   </div>
 </div>
 </>

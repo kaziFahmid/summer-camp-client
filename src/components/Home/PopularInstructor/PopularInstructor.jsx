@@ -13,7 +13,7 @@ export default function PopularInstructor() {
 
       return<>
       <div className='grid lg:grid-cols-3 grid-cols-1 mt-32 gap-4'> 
-      {instructors.slice(0,6).map((instructor,index)=> <div key={index} className="card w-96 mx-auto bg-base-100 shadow-xl">
+      {instructors.slice(0,6).map((instructor,index)=> <div key={index} className="card md:w-96 mx-auto bg-base-100 shadow-xl">
     <figure><img src={instructor.image}alt="Shoes"  className='h-72'/></figure>
     <div className="card-body">
       <h2 className="card-title">Name:{instructor.instructorname}</h2>
