@@ -21,7 +21,7 @@ export default function PopularClass() {
       studentsEnrolment - a.
       studentsEnrolment);
   return (
-    <div className='grid grid-cols-1 md:grid-cols-3 mt-14 gap-4 container mx-auto'>
+    <div className='grid grid-cols-1 lg:grid-cols-3 mt-14 gap-4 container mx-auto'>
         {classes.slice(0,6).map((cls,index)=>  <div data-aos="flip-down" key={index}className={`card md:w-96 mx-auto  bg-base-100 shadow-xl `}>
       <figure>
         <img src={cls.image} alt="Shoes" className="h-72" />
