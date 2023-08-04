@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {},
+    fontFamily:{
+      abc:['Bebas Neue','sans-serif']
+    }
   },
   plugins: [require("daisyui")],
   daisyui: {

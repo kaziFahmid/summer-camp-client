@@ -17,6 +17,7 @@ export default function Login() {
       .then((result) => {
         // Signed in
         const user = result.user;
+        
         reset();
         navigate(from, { replace: true });
       })
@@ -28,16 +29,16 @@ export default function Login() {
 
   return (
     <div className="hero min-h-screen ">
-  <div className="hero-content flex-col ">
+  <div className="md:hero-content flex-col ">
     <div className="text-left lg:text-left">
-      <h1 className="text-5xl text-pink-500 font-bold">Login now!</h1>
+      <h1 className="text-5xl text-orange-500 font-bold">Login now!</h1>
       <p className="py-6 mt-2">
         Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In
         deleniti eaque aut repudiandae et a id nisi.
       </p>
     </div>
-    <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 ">
-      <form className="card-body">
+    <div className="card flex-shrink-0  max-w-sm  shadow-2xl bg-base-100 ">
+      <form onSubmit={handleSubmit(onSubmit)} className="card-body">
         <div className="form-control">
           <label className="label">
             <span className="label-text">Email</span>
@@ -86,7 +87,7 @@ export default function Login() {
         </div>
 
         <div className="form-control mt-6">
-          <button className="btn bg-pink-500 text-white w-full">Login</button>
+          <button className="btn bg-orange-500 text-white w-full">Login</button>
         </div>
         <p className="text-center">
           Have no account? <Link to="/signup">Signup</Link>

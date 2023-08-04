@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import useAuth from '../UseAuth/useAuth'
-
+import { GiHamburgerMenu } from 'react-icons/gi';
 export default function Header() {
+  const[isHidden,setIsHidden]=useState(true)
+  let handleNavMenu=()=>{
+    setIsHidden(!isHidden)
+  }
   const{user,logOut}=useAuth()
 let handleLogout=()=>{
   console.log("asdfasdf")
@@ -26,38 +30,71 @@ let handleMode=()=>{
 }
   return (
 <>
-<div className='bg-pink-400'>
-<p className='text-white ms-4'> 57/A, GREEN LANE, NYC  +10 (78) 367 3692</p>
+<header className='flex justify-between items-center pt-8 lg:px-24'>
+  <div>
+    <h2 className='text-2xl font-bold'>Summer<span className='font-bold text-orange-400'>Camp</span></h2>
+  </div>
+<div className="lg:hidden block " onClick={handleNavMenu}>
+  <button className='btn '>{isHidden?<GiHamburgerMenu/>:'X'}</button>
+</div>
+  <ul className=" justify-center items-center hidden  lg:flex gap-5  text-black  ">
+   <li className= {` hover:text-orange-500 duration-200 ${theme === 'dark' ? 'text-white' : 'text-gray-600'}`}><Link to='/'>Home</Link></li><li className={` hover:text-orange-500  duration-200 ${theme === 'dark' ? 'text-white' : 'text-gray-600'}`}><Link to='/instructors'>Instructors</Link></li><li className={` hover:text-orange-500  duration-200 ${theme === 'dark' ? 'text-white' : 'text-gray-600'}`}><Link to='/classes'>Classes</Link></li>
+   {user?.email&&<li className={` duration-200 hover:text-orange-500 ${theme === 'dark' ? 'text-white' : 'text-gray-600'}`}><Link to='/dashboard'>Dashboard</Link></li>}
+ {user?.email&&<li > <Link><img src={user?.photoURL} style={{ width: '30px', height: '30px', borderRadius: '50%', objectFit: 'cover' }}/></Link></li>}
 
-</div>
-<div className="navbar bg-base-100">
-  <button className='btn hidden md:block' onClick={handleMode}>{theme === 'dark' ? 'Light' : 'Dark'}</button>
-  <div className="navbar-start">
-    <div className="dropdown z-50">
-      <label tabIndex={0} className="btn btn-ghost lg:hidden">
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
-      </label>
-      <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-      <li className='mt-3  hover:text-pink-500'><Link to='/'>Home</Link></li><li className='mt-3 hover:text-pink-500'><Link to='/instructors'>Instructors</Link></li><li className='mt-3 hover:text-pink-500 '><Link to='/classes'>Classes</Link></li><li className='mt-3 hover:text-pink-500' ><Link to='/dashboard'>Dashboard</Link></li>
-    {user?.email?<Link onClick={handleLogout} className="btn mr-5  hover:bg-pink-500 hover:text-white w-full" >LogOut</Link>:  <Link className="btn mr-5 w-full  hover:bg-pink-500 hover:text-white  "  to='/login'>Login</Link>}
-     {user?.email?"": <Link className="btn mt-3 mr-5 bg-pink-500 text-white w-full " to='/signup'>Signup</Link>}
-      <button className='btn mt-3  w-full md:hidden' onClick={handleMode}>{theme === 'dark' ? 'Light' : 'Dark'}</button>
-      </ul>
-    </div>
-    <a className="btn btn-ghost normal-case text-xl">SummerCamp</a>
-  </div>
-  <div className="navbar-center hidden lg:flex ">
-    <ul className=" justify-center items-center menu menu-horizontal flex gap-5 px-1 text-black font-bold ">
-   <li className= {`mt-3 hover:text-pink-500 ${theme === 'dark' ? 'text-white' : 'text-black'}`}><Link to='/'>Home</Link></li><li className={`mt-3 hover:text-pink-500 ${theme === 'dark' ? 'text-white' : 'text-black'}`}><Link to='/instructors'>Instructors</Link></li><li className={`mt-3 hover:text-pink-500 ${theme === 'dark' ? 'text-white' : 'text-black'}`}><Link to='/classes'>Classes</Link></li>
-   {user?.email&&<li className={`mt-3 hover:text-pink-500 ${theme === 'dark' ? 'text-white' : 'text-black'}`}><Link to='/dashboard'>Dashboard</Link></li>}
- {user?.email&&<li > <Link><img src={user?.photoURL} style={{ width: '30px', height: '30px', borderRadius: '50%', objectFit: 'cover' }}/></Link></li>}  
+ <li>  <button className='btn hidden md:block' onClick={handleMode}>{theme === 'dark' ? 'Light' : 'Dark'}</button></li>
+  {user?.email?<li><Link onClick={handleLogout} className="btn  hover:bg-orange-500 hover:text-white md:flex hidden" >Logout</Link></li>:<li><Link className="btn px-7   bg-orange-500 text-white  hidden lg:flex "  to='/login'>Login</Link></li>}  
+
+  {user?'': <li><Link className={`underline  ${theme === 'dark' ? 'text-white' : 'text-black'}  hidden lg:flex`} to='/signup'>Signup</Link></li>}
+
     </ul>
-  </div>
-  <div className="navbar-end">
-    {user?.email?<Link onClick={handleLogout} className="btn mr-5  hover:bg-pink-500 hover:text-white md:flex hidden" >LogOut</Link>:<Link className="btn mr-5  hover:bg-pink-500 hover:text-white hidden md:flex "  to='/login'>Login</Link>}
-   {user?'': <Link className="btn mr-5 bg-pink-500 text-white  hidden md:flex" to='/signup'>Signup</Link>}
-  </div>
-</div>
+</header>
+
+
+
+
+ <ul className={`justify-center items-center mt-9 ${isHidden?'hidden':"flex"} flex-col lg:hidden gap-5  text-black`}>
+   <li className= {` hover:text-orange-500 duration-200 ${theme === 'dark' ? 'text-white' : 'text-gray-600'}`}><Link to='/'>Home</Link></li><li className={` hover:text-orange-500  duration-200 ${theme === 'dark' ? 'text-white' : 'text-gray-600'}`}><Link to='/instructors'>Instructors</Link></li><li className={` hover:text-orange-500  duration-200 ${theme === 'dark' ? 'text-white' : 'text-gray-600'}`}><Link to='/classes'>Classes</Link></li>
+   {user?.email&&<li className={` duration-200 hover:text-orange-500 ${theme === 'dark' ? 'text-white' : 'text-gray-600'}`}><Link to='/dashboard'>Dashboard</Link></li>}
+ {user?.email&&<li > <Link><img src={user?.photoURL} style={{ width: '30px', height: '30px', borderRadius: '50%', objectFit: 'cover' }}/></Link></li>}
+
+ <li>  <button className='btn  md:block' onClick={handleMode}>{theme === 'dark' ? 'Light' : 'Dark'}</button></li>
+  {user?.email?<li><Link onClick={handleLogout} className="btn   hover:text-white md:flex" >Logout</Link></li>:<li><Link className="btn px-7   bg-orange-500 text-white   lg:flex "  to='/login'>Login</Link></li>}  
+
+  {user?'': <li><Link className={`underline  lg:flex ${theme === 'dark' ? 'text-white' : 'text-gray-600'}`} to='/signup'>Signup</Link></li>}
+
+    </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </>
   )
 }

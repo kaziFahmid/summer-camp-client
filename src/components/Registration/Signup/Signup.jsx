@@ -61,15 +61,15 @@ export default function Signup() {
 
   return (
     <div className="hero min-h-screen ">
-      <div className="hero-content flex-col lg:flex-column">
-        <div className="text-center lg:text-left">
-          <h1 className="text-5xl font-bold text-pink-400">Signup now!</h1>
+      <div className="md:hero-content flex-col lg:flex-column">
+        <div className="text-start ">
+          <h1 className="text-5xl font-bold text-orange-400">Signup now!</h1>
           <p className="py-6">
             Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti
             eaque aut repudiandae et a id nisi.
           </p>
         </div>
-        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+        <div className="card flex-shrink-0 w-full lg:max-w-sm shadow-2xl bg-base-100">
           <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
             <div className="form-control">
               <label className="label">
@@ -169,7 +169,7 @@ export default function Signup() {
             </div>
 
             <div className="form-control mt-6">
-              <button className="btn bg-pink-500 text-white">Signup</button>
+              <button className="btn bg-orange-500 text-white">Signup</button>
             </div>
             <p>
               Have an account? <Link to="/Login">Login</Link>

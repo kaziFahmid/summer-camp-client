@@ -63,19 +63,27 @@ export default function ClassBox({
   };
  
   return (
-    <div className={`card md:w-96 mx-auto bg-base-100 shadow-xl ${seat==0&& "bg-red-500"}`}>
+    <div className={`card   mx-auto bg-base-100 shadow-xl ${seat==0&& "bg-red-500"}`}>
+
       <figure>
         <img src={image} alt="Shoes" className="h-72" />
       </figure>
       <div className="card-body">
-        <h2 className="card-title">Name: {name}</h2>
-        <h2 className="card-title">Instructor name: {instructorname}</h2>
+      <div className="rating rating-sm">
+  <input type="radio" name="rating-5" className="mask mask-star-2 bg-orange-400" />
+  <input type="radio" name="rating-5" className="mask mask-star-2 bg-orange-400" checked />
+  <input type="radio" name="rating-5" className="mask mask-star-2 bg-orange-400" />
+  <input type="radio" name="rating-5" className="mask mask-star-2 bg-orange-400" />
+  <input type="radio" name="rating-5" className="mask mask-star-2 bg-orange-400" />
+</div>
+        <h2 className="card-title">{name} <span className='text-slate-400 text-base'>${price}</span></h2>
+        <p className="text-slate-400">{instructorname}</p>
 
-        <h2 className="card-title">Seat: {seat}</h2>
-        <h2 className="card-title">Price: {price}</h2>
-
+        <h2 className="card-title text-slate-400"> {seat}</h2>
+ 
+       
         <button
-          className="btn bg-pink-500 text-white"
+          className="btn bg-orange-400 text-white"
           onClick={()=>handleSelect(cls)} 
         disabled={ seat==0||isAdmin.admin||isInstructor.instructor }>
           Select
