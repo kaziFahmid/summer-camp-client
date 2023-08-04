@@ -9,7 +9,7 @@ export default function Header() {
   }
   const{user,logOut}=useAuth()
 let handleLogout=()=>{
-  console.log("asdfasdf")
+  
   logOut()
 }
 const[theme,setTheme]=useState(localStorage.getItem('theme')?localStorage.getItem('theme'):"light")
@@ -21,12 +21,18 @@ useEffect(()=>{
 },[theme])
 
 let handleMode=()=>{
+  document.location.reload()
   if(theme=="light"){
+
     setTheme("dark")
+    
   }
   else{
+
     setTheme("light")
+   
   }
+  
 }
   return (
 <>

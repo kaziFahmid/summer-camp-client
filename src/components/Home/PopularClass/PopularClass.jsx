@@ -1,9 +1,9 @@
 import { useQuery } from '@tanstack/react-query'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 
 export default function PopularClass() {
- 
+  const [darkMode, setDarkMode] = useState(false);
     const {data:classes=[]}=useQuery({
         queryKey: ['classes'],
         queryFn: async () => {
@@ -15,6 +15,12 @@ export default function PopularClass() {
       classes.sort((a, b) => b.
       studentsEnrolment - a.
       studentsEnrolment);
+      useEffect(() => {
+        
+        const theme = localStorage.getItem('theme');
+        setDarkMode(theme === 'dark');
+      }, [darkMode]);
+    
   return (
     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-14 gap-4 container mx-auto max-w-6xl'>
         {classes.slice(0,6).map((cls,index)=>  <div key={index}  className=" antialiased text-gray-900">
@@ -23,7 +29,7 @@ export default function PopularClass() {
     <img src={cls.image} alt=" random imgee" className="w-full object-cover object-center rounded-lg shadow-md h-52"/>    
     
  <div className="relative px-4 -mt-16  ">
-   <div className={`  ${localStorage.getItem('theme') === 'dark' ? 'bg-gray-800 text-white' : 'bg-white'}  p-6 rounded-lg shadow-lg`}>
+   <div className={`  ${darkMode ? 'bg-gray-800 text-white' : 'bg-white'}  p-6 rounded-lg shadow-lg`}>
     <div className="flex items-baseline">
       <span className="bg-orange-400 text-white text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide">
         New

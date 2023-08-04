@@ -22,7 +22,7 @@ export default function PopularInstructor() {
     
       return<>
       <div className='grid lg:grid-cols-3 md:grid-cols-2 max-w-6xl mx-auto grid-cols-1 mt-32 gap-4'> 
-      {instructors.slice(0,6).map((instructor,index)=>{return  <div data-aos="zoom-in" key={index} className={`  px-6 py-6  rounded-xl shadow-lg transform hover:scale-105 transition duration-500 ${isDark === 'dark' ? 'bg-gray-800 text-white' :'bg-white'}` }>
+      {instructors.slice(0,6).map((instructor,index)=>{return  <div data-aos="zoom-in" key={index} className={`   px-6 py-6  rounded-xl shadow-lg transform hover:scale-105 transition duration-500 ${localStorage.getItem('theme') === 'dark' ? 'bg-gray-800 text-white' : ''}` }>
     
       <div className="relative">
         <img className="img-fluid rounded-xl h-60 object-contain  w-full" src={instructor.image} alt="Colors" />
