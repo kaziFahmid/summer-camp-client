@@ -32,7 +32,7 @@ const Banner = () => {
 </div>
       </div>
 
-      <div data-aos="fade-left">
+      <div >
 <img src='https://i.ibb.co/VN7MJ7n/pngegg.png' className='img-fluid  lg:h-screen'/>
       </div>
     </div>

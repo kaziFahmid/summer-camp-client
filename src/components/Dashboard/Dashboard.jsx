@@ -99,7 +99,7 @@ Instructor
   </div>
 
   <div className="flex-grow">
-    <nav className="bg-pink-500 text-primary-content p-4">
+    <nav className="bg-orange-500 text-primary-content p-4">
      <Fade><h1 className="text-2xl text-white font-bold">Dashboard</h1></Fade> 
     </nav>
     <div className="p-4">
