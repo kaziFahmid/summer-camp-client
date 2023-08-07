@@ -8,7 +8,7 @@ const AboutUs = () => {
       </div>
       <div>
         <span className='text-orange-400 mb-6'>About Us</span>
-        <h1 className='text-4xl font-bold'>Ready to help you learn English in private</h1>
+        <h1 className='text-4xl font-bold'>Ready to help you learn English in Course</h1>
 <p className='mt-5 text-slate-400'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Risus dignissim faucibus id sit consequat. Vivamus quam senectus vitae dolor ac.</p>
 <div>
     <button className='text-white bg-orange-400 py-4 px-16 mt-5'>Get Started</button>

@@ -13,7 +13,7 @@ const Banner = () => {
   return (
     <div className={`flex lg:flex-row flex-col mt-4 justify-around container bg-no-repeat lg:bg-right bg-contain     ${localStorage.getItem('theme') === 'dark' ? '' : 'bg-[url(https://i.ibb.co/8MB5LZ0/Png-Item-1131316.png)]'}  pt-6 items-center `}>
       <div className='lg:ms-24   ' data-aos="fade-right" >
-<h1 className='uppercase text-6xl  md:text-8xl mb-6 font-bold  font-abc tracking-wider '>start become your<br className='lg:block hidden'></br> best <span className='text-orange-400 '>Version</span></h1>
+<h1 className='uppercase text-6xl  md:text-6xl mb-6 font-bold   tracking-wider '>start become your<br className='lg:block hidden'></br> best <span className='text-orange-400 '>Version</span></h1>
 <p className='text-slate-400 mb-6'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Risus<br className='lg:block hidden'></br> dignissim faucibus id sit consequat. Vivamus quam senectus <br className='lg:block hidden'></br>vitae dolor ac.</p>
 
 <div className='flex lg:flex-row flex-col lg:justify-start  justify-center mt-5 lg:items-center gap-12'>
