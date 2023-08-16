@@ -2,7 +2,7 @@ import React from 'react'
 import { BsFillCheckSquareFill} from 'react-icons/bs';
 const WhyChooseUs = () => {
   return (
-    <div className='grid lg:grid-cols-2 grid-cols-1 max-w-5xl mx-auto mt-40'>
+    <div className='grid lg:grid-cols-2 grid-cols-1 max-w-5xl mx-auto mt-40 lg:mb-0 mb-9'>
       <div className='flex justify-center items-center flex-col'>
      <div>
      <p className='text-orange-400'>Why US</p>
@@ -15,8 +15,8 @@ const WhyChooseUs = () => {
 
      </div>
       </div>
-      <div>
-        <img src='https://i.ibb.co/Sy5k2wY/pngegg-5.png' className='img-fluid'/>
+      <div className='lg:mt-0 mt-11'>
+        <img src='https://i.ibb.co/Sy5k2wY/pngegg-5.png' className='img-fluid mx-auto'/>
       </div>
     </div>
   )

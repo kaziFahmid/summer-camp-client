@@ -59,7 +59,7 @@ let handleMode=()=>{
 
 
 
- <ul className={`justify-center items-center mt-9 ${isHidden?'hidden':"flex"} flex-col lg:hidden gap-5  text-black`}>
+ <ul className={`justify-center items-center mt-3 ${isHidden?'hidden':"flex"} flex-col lg:hidden gap-5  text-black`}>
    <li className= {` hover:text-orange-500 duration-200 ${theme === 'dark' ? 'text-white' : 'text-gray-600'}`}><Link to='/'>Home</Link></li><li className={` hover:text-orange-500  duration-200 ${theme === 'dark' ? 'text-white' : 'text-gray-600'}`}><Link to='/instructors'>Instructors</Link></li><li className={` hover:text-orange-500  duration-200 ${theme === 'dark' ? 'text-white' : 'text-gray-600'}`}><Link to='/classes'>Classes</Link></li>
    {user?.email&&<li className={` duration-200 hover:text-orange-500 ${theme === 'dark' ? 'text-white' : 'text-gray-600'}`}><Link to='/dashboard'>Dashboard</Link></li>}
  {user?.email&&<li > <Link><img src={user?.photoURL} style={{ width: '30px', height: '30px', borderRadius: '50%', objectFit: 'cover' }}/></Link></li>}
