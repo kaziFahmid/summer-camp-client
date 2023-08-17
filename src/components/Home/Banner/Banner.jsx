@@ -33,7 +33,7 @@ const Banner = () => {
       </div>
 
       <div >
-<img src='https://i.ibb.co/VN7MJ7n/pngegg.png' className='img-fluid  lg:h-screen'/>
+<img src='https://i.ibb.co/nbHCnWc/icons8-team-Fc-Lyt7l-W5wg-unsplash-1.png' className='img-fluid  lg:h-screen'/>
       </div>
     </div>
   )
