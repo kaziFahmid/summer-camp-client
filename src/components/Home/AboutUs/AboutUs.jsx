@@ -4,7 +4,7 @@ const AboutUs = () => {
   return (
     <div className='grid lg:grid-cols-2  max-w-6xl mx-auto grid-cols-1 mt-24 gap-32 items-center'>
       <div>
-        <img src='https://i.ibb.co/HzFf7vg/Pngtree-hand-drawn-girl-reading-book-4050570.png' className='img-fluid'/>
+        <img src='https://i.ibb.co/TbbSs1h/6864070.jpg' className='img-fluid'/>
       </div>
       <div>
         <span className='text-orange-400 mb-6'>About Us</span>

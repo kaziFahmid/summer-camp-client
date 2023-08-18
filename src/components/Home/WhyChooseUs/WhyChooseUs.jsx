@@ -16,7 +16,7 @@ const WhyChooseUs = () => {
      </div>
       </div>
       <div className='lg:mt-0 mt-11'>
-        <img src='https://i.ibb.co/Sy5k2wY/pngegg-5.png' className='img-fluid mx-auto'/>
+        <img src='https://i.ibb.co/McQgjr4/6461.jpg' className='img-fluid mx-auto'/>
       </div>
     </div>
   )
